@@ -1,7 +1,7 @@
 /**
  * Created by 1 on 09.11.2014.
  */
-public class Paragraph {
+public class Paragraph extends Text{
 
  private String elementParagraph;
  private int elementId;
