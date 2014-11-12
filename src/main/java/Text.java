@@ -1,27 +1,35 @@
 import java.io.*;
+import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 /**
  * Created by 1 on 09.11.2014.
  */
 public class Text {
     private int length;
-    private String txt;
+    //private String txt;
     private String filePath;
 
-    public String getTxt() {
+    private LinkedList<Paragraph> paragraphs;//=new LinkedList<Paragraph>();
+    private LinkedList<Sentence> sentences;//=new LinkedList<Sentence>();
+    private LinkedList<Word> words=new LinkedList<Word>();
+
+    /*public String getTxt() {
         return txt;
     }
 
     public void setTxt(String txt) {
         this.txt = txt;
     }
+*/
 
     public int getLength() {
         return length;
     }
 
     public void setLength(int length) {
+        //logger
         this.length = length;
     }
 
@@ -30,31 +38,43 @@ public class Text {
     }
 
     public void setFilePath(String filePath) {
+        //logger
         this.filePath = filePath;
     }
 
     public Text(String path){
 
-        setFilePath(path);
+        File f =new File(path);
+        if (!f.exists()){
+            System.out.println("file is n't exist = [" + path + "]"); return;};
+            setFilePath(path);
+        this.setLength((int) f.length());
+        //f.setReadOnly();
+
+
+    }
+
+    public void splitParagraphs(Text txt){
+      String path=txt.getFilePath();
+        LinkedList<Paragraph> prghList=new LinkedList<Paragraph>();
+      File f=new File(path);
+
         try {
-            BufferedReader br =
-                    new BufferedReader(new FileReader
-                    (new File(path)));
-            String tmp="";
-            try {
-                while ((tmp = br.readLine()) != null) {
-                    this.txt=this.txt.concat(tmp);
+            FileReader fr=new FileReader(f);
+            Scanner scan = new Scanner(f);
+            scan.useDelimiter(PunctuationMark.getMarkParagraph());
+            int i=0;
+            while (scan.hasNext()) {
+                Paragraph prgh=new Paragraph();
+                i++;
+                prgh.setElementParagraph(scan.toString());
+                //log
+                prghList.add(i,prgh);
 
-
-                        System.out.println("Line "+tmp);
-                }
-                br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-                
             }
 
-
+            txt.paragraphs=prghList;
+            scan.close();
 
 
 
@@ -64,11 +84,10 @@ public class Text {
 
 
 
-
-
-
-
-
     }
+
+
+
+
 
 }
