@@ -20,11 +20,12 @@ public class TextUtility {
         LinkedList<Paragraph> prghList = new LinkedList<Paragraph>();
         File f = new File(path);
         //txt.textLog
+/*
         textUtilLog.info(path + " split Paragraph begin ");
         textUtilLog.info(" f.toString()= "+f.toString());
         textUtilLog.info(" f.exists();= "+f.exists());
         textUtilLog.info(" f.canRead= "+f.canRead());
-
+*/
 
         try {
             //textUtilLog.debug("111 scan ");
@@ -38,7 +39,7 @@ public class TextUtility {
             //scan.match();
             //textUtilLog.debug("scan nextLine="+scan.nextLine());
 
-            textUtilLog.debug("scan nextline="+scan.nextLine());
+            //textUtilLog.debug("scan nextline="+scan.nextLine());
             Pattern p=Pattern.compile(PunctuationMark.getMarkParagraph());
             scan.useDelimiter(p);
             //scan.useDelimiter("[^a-zA-Z]+");
@@ -47,18 +48,22 @@ public class TextUtility {
             //textUtilLog.debug("p.split="+scan.delimiter());
             //scan.next();
             int i = 0;
-            textUtilLog.debug("scan next="+scan.hasNext());
+            //textUtilLog.debug("scan next="+scan.hasNext());
 
             while (scan.hasNext()) {
-                textUtilLog.debug("333 scan.toString() = [" + scan.toString() + "]");
+
+                textUtilLog.debug("      >------------------Paragraph--------------------        " );
+                textUtilLog.debug("" + scan.next() + "");
                 Paragraph prgh = new Paragraph();
-                i++;
-                prgh.setElementParagraph(scan.toString());
+
+                prgh.setElementParagraph(scan.next());
                 //log
-                textUtilLog.info(" Paragraph = [" + scan.toString() + "]");
-                textUtilLog.debug(" scan.toString() = [" + scan.toString() + "]");
-                textUtilLog.debug(" prghList i = [" + i + "]");
+                //textUtilLog.info(" Paragraph = [" + scan.next() + "]");
+                //textUtilLog.debug(" scan.toString() = [" + scan.toString() + "]");
+                textUtilLog.debug("        prghList i = [" + i + "]");
+                textUtilLog.debug("      -------------------Paragraph--------------------<        " );
                 prghList.add(i, prgh);
+                i++;
 
             }
 
