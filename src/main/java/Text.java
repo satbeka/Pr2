@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class Text {
 
-    private static org.slf4j.Logger log = LoggerFactory.getLogger("Text");
+    private static org.slf4j.Logger textLog = LoggerFactory.getLogger("textLog");
 
     private int length;
     //private String txt;
@@ -17,8 +17,13 @@ public class Text {
 
     private LinkedList<Paragraph> paragraphs;//=new LinkedList<Paragraph>();
     private LinkedList<Sentence> sentences;//=new LinkedList<Sentence>();
-    private LinkedList<Word> words=new LinkedList<Word>();
-    public Text(){super();};
+    private LinkedList<Word> words = new LinkedList<Word>();
+
+    public Text() {
+        super();
+    }
+
+    ;
 
     /*public String getTxt() {
         return txt;
@@ -36,7 +41,15 @@ public class Text {
     public void setLength(int length) {
         //logger
         this.length = length;
-        log.debug("length="+length);
+        textLog.debug("length=" + length);
+    }
+
+    public LinkedList<Paragraph> getParagraphs() {
+        return paragraphs;
+    }
+
+    public void setParagraphs(LinkedList<Paragraph> paragraphs) {
+        this.paragraphs = paragraphs;
     }
 
     public String getFilePath() {
@@ -46,60 +59,26 @@ public class Text {
     public void setFilePath(String filePath) {
         //logger
         this.filePath = filePath;
-        log.debug("filePath="+filePath);
+        textLog.debug("filePath=" + filePath);
     }
 
-    public Text(String path){
+    public Text(String path) {
 
-        File f =new File(path);
-        if (!f.exists()){
-            log.info("file is n't exist = [" + path + "]");
+        File f = new File(path);
+        if (!f.exists()) {
+            textLog.info("file is n't exist = [" + path + "]");
             //System.out.println("file is n't exist = [" + path + "]");
-            return;};
-            setFilePath(path);
+            return;
+        }
+        ;
+        setFilePath(path);
         this.setLength((int) f.length());
         //f.setReadOnly();
 
 
     }
 
-    public void splitParagraphs(Text txt){
-      String path=txt.getFilePath();
-        LinkedList<Paragraph> prghList=new LinkedList<Paragraph>();
-      File f=new File(path);
-        log.info(path+" split Paragraph begin ");
-        try {
-            FileReader fr=new FileReader(f);
-            Scanner scan = new Scanner(f);
-            scan.useDelimiter(PunctuationMark.getMarkParagraph());
-            int i=0;
-            while (scan.hasNext()) {
-                Paragraph prgh=new Paragraph();
-                i++;
-                prgh.setElementParagraph(scan.toString());
-                //log
-                log.info("Paragraph = [" +scan.toString() + "]");
-                log.debug("scan.toString() = [" +scan.toString() + "]");
-                log.debug("prghList i = [" +i + "]");
-                prghList.add(i,prgh);
-
-            }
-
-            txt.paragraphs=prghList;
-            scan.close();
-            log.info(path+" split Paragraph end ");
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-
-
-    }
-
-
-
-
-
 }
+
+
+

@@ -19,9 +19,11 @@ public class PunctuationMark {
 
     public static String getMarkParagraph(){
         String rez,rez1,rez2=null;
-        rez1="\n";
-        rez2=" ";
-        rez=rez1+rez2;
+        rez1= "(\\n\\s)+";
+                //"(\n" +
+                //"\s)+";
+        //rez2="[/s]";
+        rez=rez1;//+rez2;
         log.debug("Mark="+rez);
         return rez;
     }

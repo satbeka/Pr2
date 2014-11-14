@@ -12,9 +12,9 @@ public class Test {
 
 
         log.info("begin ");
-        Text txt=new Text("C:\\111\\12place.txt");
-        txt.splitParagraphs(txt);
-
+        Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\12place.txt");
+        //Text txt=TextUtility.splitParagraphsByScanner("C:\\Program Files\\Far\\FarFAQ.txt");
+        //Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\readme.txt");
 
 
         log.info("end ");
