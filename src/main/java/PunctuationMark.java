@@ -24,7 +24,21 @@ public class PunctuationMark {
                 //"\s)+";
         //rez2="[/s]";
         rez=rez1;//+rez2;
-        log.debug("Mark="+rez);
+        log.debug("Mark paragraph="+rez);
         return rez;
     }
+
+    public static String getMarkSentence(){
+        String rez,rez1=null;
+        rez1= "([.|!|?|()])";
+        //"(\n" +
+        //"\s)+";
+        //rez2="[/s]";
+        rez=rez1;//+rez2;
+        log.debug("Mark sentence="+rez);
+        return rez;
+    }
+
+
+
 }

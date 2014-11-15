@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -57,6 +58,7 @@ public class TextUtility {
                 Paragraph prgh = new Paragraph();
 
                 prgh.setElementParagraph(scan.next());
+                prgh.setElementId(i+1);
                 //log
                 //textUtilLog.info(" Paragraph = [" + scan.next() + "]");
                 //textUtilLog.debug(" scan.toString() = [" + scan.toString() + "]");
@@ -78,4 +80,80 @@ public class TextUtility {
         }
     return txt;
     }
+
+    public static Paragraph splitSentencesByMatcher(Paragraph inParagraph) {
+
+        String elementParagraph=inParagraph.getElementParagraph();
+        String pSentence="";
+
+        LinkedList<Sentence> sentenceList = new LinkedList<Sentence>();
+
+        textUtilLog.debug("splitSentencesByMatcher ");
+            //textUtilLog.debug("111 scan delim="+scan.delimiter().toString());
+
+            textUtilLog.debug(" matcher begin ");
+            Pattern p=Pattern.compile(PunctuationMark.getMarkSentence());
+            textUtilLog.debug("pattern delim="+p.pattern());
+            Matcher m=p.matcher(elementParagraph);
+            textUtilLog.debug("           elementParagraph=    "+elementParagraph);
+            textUtilLog.debug(elementParagraph);
+
+            int i = 0;
+        int s;
+        int e;
+        int sPrevios=0;
+            while (m.find()) {
+                s=m.start();
+                e=m.end();
+                textUtilLog.debug("      start= "+s );
+                textUtilLog.debug("      end= "+e );
+                textUtilLog.debug("                 " );
+                if (i==0){ pSentence=elementParagraph.substring(i,s-1);sPrevios=e;}
+                else {pSentence=elementParagraph.substring(sPrevios,s);sPrevios=e;};
+                //pSentence=m.group();
+
+                textUtilLog.debug("      >------------------2Sentence--------------------        ");
+                textUtilLog.debug("               2pSentence=  " + pSentence);
+                Sentence sentence = new Sentence();
+                sentence.setElementSentence(pSentence);
+                sentence.setElementId(i + 1);
+                textUtilLog.debug("        sentenceList i = [" + i + "]");
+                textUtilLog.debug("      -------------------2Sentence--------------------<        ");
+                sentenceList.add(i, sentence);
+                i++;
+
+
+/*
+                Pattern p2=Pattern.compile("[^.|?|!|()]");
+                Matcher m2=p2.matcher(pSentence);
+
+                textUtilLog.debug("      >------------------Sentence--------------------        ");
+                textUtilLog.debug("               pSentence=  " + pSentence);
+
+                if (m2.matches()) {
+
+                    textUtilLog.debug("      >------------------2Sentence--------------------        ");
+                    textUtilLog.debug("               2pSentence=  " + pSentence);
+                    Sentence sentence = new Sentence();
+                    sentence.setElementSentence(pSentence);
+                    sentence.setElementId(i + 1);
+                    textUtilLog.debug("        sentenceList i = [" + i + "]");
+                    textUtilLog.debug("      -------------------2Sentence--------------------<        ");
+                    sentenceList.add(i, sentence);
+                    i++;
+                    //m.group();
+                }
+*/
+
+            }
+
+            inParagraph.setSentences(sentenceList);
+
+            textUtilLog.debug(" split Paragraph=[ "+inParagraph.getElementId()+" ] end" );
+            return inParagraph;
+
+    }
+
+
+
 }

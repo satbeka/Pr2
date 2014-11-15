@@ -16,7 +16,6 @@ public class Text {
     private String filePath;
 
     private LinkedList<Paragraph> paragraphs;//=new LinkedList<Paragraph>();
-    private LinkedList<Sentence> sentences;//=new LinkedList<Sentence>();
     private LinkedList<Word> words = new LinkedList<Word>();
 
     public Text() {

@@ -15,7 +15,7 @@ public class Test {
         //Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\12place.txt");
         Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\FarFAQ.txt");
         //Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\readme.txt");
-
+        Paragraph prg=TextUtility.splitSentencesByMatcher(txt.getParagraphs().get(3));
 
         log.info("end ");
         //System.out.println("args222 = [" + args + "]");
