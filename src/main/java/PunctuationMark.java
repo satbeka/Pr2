@@ -23,6 +23,8 @@ public class PunctuationMark {
                 //"(\n" +
                 //"\s)+";
         //rez2="[/s]";
+        //.*[(]|.*[)]|.*[?] 171114
+        //.*[(]|.*[)]|.*[(]|.*[?]|.*[\n]|.*[.]
         rez=rez1;//+rez2;
         log.debug("Mark paragraph="+rez);
         return rez;
