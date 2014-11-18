@@ -57,6 +57,13 @@ tyttuutyu!gjgjgj
         return rez;
     }
 
+    public static String getMarkWord(){
+        String rez=null;
+        ResourceBundle resourceBundle=ResourceBundle.getBundle("punctuation_mark");
+        rez=resourceBundle.getString("MarkWord");
+        textLog.debug("Mark word="+rez);
+        return rez;
+    }
 
 
 }

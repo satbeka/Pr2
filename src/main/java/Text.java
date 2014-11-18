@@ -1,6 +1,7 @@
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -15,8 +16,15 @@ public class Text {
     //private String txt;
     private String filePath;
 
+    /* if many times need to replace, delete, remove, add */
     private LinkedList<Paragraph> paragraphs;//=new LinkedList<Paragraph>();
     private LinkedList<Word> words = new LinkedList<Word>();
+
+
+    /* if many times seek
+    private ArrayList<Paragraph> paragraphs;
+    private ArrayList<Word> words;// = new ArrayList<Word>();
+    */
 
     public Text() {
         super();

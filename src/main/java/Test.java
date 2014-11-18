@@ -1,6 +1,7 @@
 import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
 
 /**
  * Created by 1 on 09.11.2014.
@@ -14,6 +15,9 @@ public class Test {
 
 
         log.info("begin ");
+        LinkedList<Word> wordLinkedList= WordUtility.getListfromResources();
+
+
         //Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\12place.txt");
         Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\FarFAQ.txt");
         //Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\readme.txt");
