@@ -1,5 +1,7 @@
 import org.slf4j.LoggerFactory;
 
+import java.io.FileNotFoundException;
+
 /**
  * Created by 1 on 09.11.2014.
  */
@@ -7,7 +9,7 @@ public class Test {
 
     private static org.slf4j.Logger log = LoggerFactory.getLogger(Test.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException{
 
 
 

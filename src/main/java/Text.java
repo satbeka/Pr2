@@ -61,17 +61,11 @@ public class Text {
         textLog.debug("filePath=" + filePath);
     }
 
-    public Text(String path) {
+    public Text(String filePath) {
 
-        File f = new File(path);
-        if (!f.exists()) {
-            textLog.info("file is n't exist = [" + path + "]");
-            //System.out.println("file is n't exist = [" + path + "]");
-            return;
-        }
-        ;
-        setFilePath(path);
-        this.setLength((int) f.length());
+
+        setFilePath(filePath);
+        //this.setLength(fileLength);
         //f.setReadOnly();
 
 

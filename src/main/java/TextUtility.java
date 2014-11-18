@@ -1,12 +1,12 @@
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
+import java.net.URL;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 /**
  * Created by 1 on 14.11.2014.
@@ -14,12 +14,28 @@ import java.util.regex.Pattern;
 public class TextUtility {
     private static org.slf4j.Logger textUtilLog = LoggerFactory.getLogger("textUtilLog");
 
-    public static Text splitParagraphsByScanner(String inPath) {
 
-        Text txt=new Text(inPath);
-        String path = txt.getFilePath();
+
+    public static Text splitParagraphsByScanner (String filePath) throws FileNotFoundException{
+
+    /* ???? Exception in thread "main" java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
+
+        DataReader dataReader=new DataReader();
+        InputStream is=DataReader.class.getClassLoader().getResourceAsStream(inPath);
+
+        Reader      reader      = new InputStreamReader(is);
+        Scanner scan=new Scanner(reader);
+*/
+
+
+        FileReader fr = DataReader.Read(filePath);
+
+        Text txt=new Text(filePath);
+        //String path = txt.getFilePath();
         LinkedList<Paragraph> prghList = new LinkedList<Paragraph>();
-        File f = new File(path);
+        //File f = new File(path);
         //txt.textLog
 /*
         textUtilLog.info(path + " split Paragraph begin ");
@@ -28,14 +44,14 @@ public class TextUtility {
         textUtilLog.info(" f.canRead= "+f.canRead());
 */
 
-        try {
+
             //textUtilLog.debug("111 scan ");
             //textUtilLog.debug("111 scan delim="+scan.delimiter().toString());
 
-            FileReader fr = new FileReader(f);
+        //FileReader fr = new FileReader(f);
             //textUtilLog.info(" fr= "+fr.toString());
 
-            Scanner scan = new Scanner(fr);
+        Scanner scan = new Scanner(fr);
             textUtilLog.debug("scan ");
             //scan.match();
             //textUtilLog.debug("scan nextLine="+scan.nextLine());
@@ -72,13 +88,11 @@ public class TextUtility {
             txt.setParagraphs(prghList);
 
             scan.close();
-            textUtilLog.debug(path + " split Paragraph end ");
+            textUtilLog.debug(filePath + " split Paragraph end ");
             return txt;
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    return txt;
+
+    //return txt;
     }
 
     public static Paragraph splitSentencesByMatcher(Paragraph inParagraph) {
@@ -153,6 +167,8 @@ public class TextUtility {
             return inParagraph;
 
     }
+
+
 
 /*
 *
