@@ -1,3 +1,7 @@
+package utility;
+
+import entity.PunctuationMark;
+import entity.Word;
 import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;

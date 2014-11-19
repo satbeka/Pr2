@@ -1,4 +1,9 @@
+import entity.Paragraph;
+import entity.Text;
+import entity.Word;
 import org.slf4j.LoggerFactory;
+import utility.TextUtility;
+import utility.WordUtility;
 
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -17,15 +22,15 @@ public class Test {
         log.info("begin ");
         int taskId=10;
         LinkedList<Word> wordLinkedList= WordUtility.getListfromResources();
-        Text txt=TextUtility.splitSentencesFromFile("C:\\111\\FarFAQ.txt");
+        Text txt= TextUtility.splitSentencesFromFile("C:\\111\\FarFAQ.txt");
 
 
 
 
         if (taskId!=10) {
-            //Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\12place.txt");
+            //entity.Text txt=utility.TextUtility.splitParagraphsByScanner("C:\\111\\12place.txt");
             Text txt2 = TextUtility.splitParagraphsByScanner("C:\\111\\FarFAQ.txt");
-            //Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\readme.txt");
+            //entity.Text txt=utility.TextUtility.splitParagraphsByScanner("C:\\111\\readme.txt");
             Paragraph prg = TextUtility.splitSentencesByMatcher(txt2.getParagraphs().get(3));
         }
 

@@ -1,13 +1,15 @@
+package entity;
+
 import java.util.LinkedList;
 
 /**
  * Created by 1 on 09.11.2014.
  */
-public class Paragraph extends Text{
+public class Paragraph extends Text {
 
  private String elementParagraph;
  private int elementId;
-    private LinkedList<Sentence> sentences;//=new LinkedList<Sentence>();
+    private LinkedList<Sentence> sentences;//=new LinkedList<entity.Sentence>();
 
     public int getElementId() {
         return elementId;

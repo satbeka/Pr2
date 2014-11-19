@@ -1,13 +1,16 @@
+package utility;
+
+import entity.Paragraph;
+import entity.PunctuationMark;
+import entity.Sentence;
+import entity.Text;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 /**
  * Created by 1 on 14.11.2014.
@@ -39,7 +42,7 @@ public class TextUtility {
         //File f = new File(path);
         //txt.textLog
 /*
-        textUtilLog.info(path + " split Paragraph begin ");
+        textUtilLog.info(path + " split entity.Paragraph begin ");
         textUtilLog.info(" f.toString()= "+f.toString());
         textUtilLog.info(" f.exists();= "+f.exists());
         textUtilLog.info(" f.canRead= "+f.canRead());
@@ -70,17 +73,17 @@ public class TextUtility {
 
             while (scan.hasNext()) {
 
-                textUtilLog.debug("      >------------------Paragraph--------------------        " );
+                textUtilLog.debug("      >------------------entity.Paragraph--------------------        " );
                 textUtilLog.debug("" + scan.next() + "");
                 Paragraph prgh = new Paragraph();
 
                 prgh.setElementParagraph(scan.next());
                 prgh.setElementId(i+1);
                 //log
-                //textUtilLog.info(" Paragraph = [" + scan.next() + "]");
+                //textUtilLog.info(" entity.Paragraph = [" + scan.next() + "]");
                 //textUtilLog.debug(" scan.toString() = [" + scan.toString() + "]");
                 textUtilLog.debug("        prghList i = [" + i + "]");
-                textUtilLog.debug("      -------------------Paragraph--------------------<        " );
+                textUtilLog.debug("      -------------------entity.Paragraph--------------------<        " );
                 prghList.add(i, prgh);
                 i++;
 
@@ -89,7 +92,7 @@ public class TextUtility {
             txt.setParagraphs(prghList);
 
             scan.close();
-            textUtilLog.debug(filePath + " split Paragraph end ");
+            textUtilLog.debug(filePath + " split entity.Paragraph end ");
             return txt;
 
 
@@ -142,14 +145,14 @@ public class TextUtility {
                 Pattern p2=Pattern.compile("[^.|?|!|()]");
                 Matcher m2=p2.matcher(pSentence);
 
-                textUtilLog.debug("      >------------------Sentence--------------------        ");
+                textUtilLog.debug("      >------------------entity.Sentence--------------------        ");
                 textUtilLog.debug("               pSentence=  " + pSentence);
 
                 if (m2.matches()) {
 
                     textUtilLog.debug("      >------------------2Sentence--------------------        ");
                     textUtilLog.debug("               2pSentence=  " + pSentence);
-                    Sentence sentence = new Sentence();
+                    entity.Sentence sentence = new entity.Sentence();
                     sentence.setElementSentence(pSentence);
                     sentence.setElementId(i + 1);
                     textUtilLog.debug("        sentenceList i = [" + i + "]");
@@ -164,7 +167,7 @@ public class TextUtility {
 
             inParagraph.setSentences(sentenceList);
 
-            textUtilLog.debug(" split Paragraph=[ "+inParagraph.getElementId()+" ] end" );
+            textUtilLog.debug(" split entity.Paragraph=[ "+inParagraph.getElementId()+" ] end" );
             return inParagraph;
 
     }
@@ -188,13 +191,13 @@ public class TextUtility {
 
         while (scan.hasNext()) {
             pSentence=scan.next().toLowerCase();
-            textUtilLog.debug("                 >------------------Sentence--------------------        " );
+            textUtilLog.debug("                 >------------------entity.Sentence--------------------        " );
             textUtilLog.debug("      " + pSentence + "     ");
             Sentence sentence = new Sentence();
             sentence.setElementSentence(pSentence);
             sentence.setElementId(i+1);
             textUtilLog.debug("        sentences List i = [" + i + "]");
-            textUtilLog.debug("                 -------------------Sentence--------------------<        " );
+            textUtilLog.debug("                 -------------------entity.Sentence--------------------<        " );
             sentenceList.add(i,sentence);
             i++;
 

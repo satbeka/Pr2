@@ -1,9 +1,8 @@
+package entity;
+
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 /**
  * Created by 1 on 09.11.2014.
@@ -17,7 +16,7 @@ public class Text {
     private String filePath;
 
     /* if many times need to replace, delete, remove, add */
-    private LinkedList<Paragraph> paragraphs;//=new LinkedList<Paragraph>();
+    private LinkedList<Paragraph> paragraphs;//=new LinkedList<entity.Paragraph>();
 
     public LinkedList<Sentence> getSentences() {
         return sentences;
@@ -27,13 +26,13 @@ public class Text {
         this.sentences = sentences;
     }
 
-    private LinkedList<Sentence> sentences;//=new LinkedList<Paragraph>();
+    private LinkedList<Sentence> sentences;//=new LinkedList<entity.Paragraph>();
     private LinkedList<Word> words = new LinkedList<Word>();
 
 
     /* if many times seek
-    private ArrayList<Paragraph> paragraphs;
-    private ArrayList<Word> words;// = new ArrayList<Word>();
+    private ArrayList<entity.Paragraph> paragraphs;
+    private ArrayList<entity.Word> words;// = new ArrayList<entity.Word>();
     */
 
     public Text() {
