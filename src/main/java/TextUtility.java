@@ -187,14 +187,14 @@ public class TextUtility {
         int i = 0;
 
         while (scan.hasNext()) {
-            pSentence=scan.next();
-            textUtilLog.debug("      >------------------Sentence--------------------        " );
+            pSentence=scan.next().toLowerCase();
+            textUtilLog.debug("                 >------------------Sentence--------------------        " );
             textUtilLog.debug("      " + pSentence + "     ");
             Sentence sentence = new Sentence();
             sentence.setElementSentence(pSentence);
             sentence.setElementId(i+1);
             textUtilLog.debug("        sentences List i = [" + i + "]");
-            textUtilLog.debug("      -------------------Sentence--------------------<        " );
+            textUtilLog.debug("                 -------------------Sentence--------------------<        " );
             sentenceList.add(i,sentence);
             i++;
 

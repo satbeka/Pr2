@@ -18,7 +18,7 @@ public class Test {
         int taskId=10;
         LinkedList<Word> wordLinkedList= WordUtility.getListfromResources();
         Text txt=TextUtility.splitSentencesFromFile("C:\\111\\FarFAQ.txt");
-        
+
 
 
 
