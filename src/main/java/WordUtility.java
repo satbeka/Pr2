@@ -13,23 +13,25 @@ public class WordUtility {
 
     public static LinkedList<Word> getListfromResources(){
 
+        String delimiter= PunctuationMark.getMarkWord();
         Locale locale=Locale.ENGLISH;
-        //Locale current = Locale.getDefault();
+        Locale current = Locale.getDefault();
         Locale.setDefault(locale);
         ResourceBundle resourceBundle=ResourceBundle.getBundle("wordList");
         LinkedList<Word> listWord=new LinkedList<Word>();
         if (!resourceBundle.containsKey("List")){wordUtilityLog.error("list of word is empty!");return listWord;};
         String rez=resourceBundle.getString("List");
         Scanner scan =new Scanner(rez);
-        scan.useDelimiter(PunctuationMark.getMarkWord());
+        scan.useDelimiter(delimiter);
         while (scan.hasNext()) {
             Word word=new Word();
             String elementWord = scan.next().toLowerCase();
+            wordUtilityLog.debug("elementWord="+elementWord);
             word.setElementWord(elementWord);
             listWord.add(word);
 
         }
-
+        Locale.setDefault(current);
 
         return listWord;
     }

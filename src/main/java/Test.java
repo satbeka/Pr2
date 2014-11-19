@@ -15,13 +15,19 @@ public class Test {
 
 
         log.info("begin ");
+        int taskId=10;
         LinkedList<Word> wordLinkedList= WordUtility.getListfromResources();
+        Text txt=TextUtility.splitSentencesFromFile("C:\\111\\FarFAQ.txt");
+        
 
 
-        //Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\12place.txt");
-        Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\FarFAQ.txt");
-        //Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\readme.txt");
-        Paragraph prg=TextUtility.splitSentencesByMatcher(txt.getParagraphs().get(3));
+
+        if (taskId!=10) {
+            //Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\12place.txt");
+            Text txt2 = TextUtility.splitParagraphsByScanner("C:\\111\\FarFAQ.txt");
+            //Text txt=TextUtility.splitParagraphsByScanner("C:\\111\\readme.txt");
+            Paragraph prg = TextUtility.splitSentencesByMatcher(txt2.getParagraphs().get(3));
+        }
 
         log.info("end ");
         //System.out.println("args222 = [" + args + "]");

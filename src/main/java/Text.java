@@ -18,6 +18,16 @@ public class Text {
 
     /* if many times need to replace, delete, remove, add */
     private LinkedList<Paragraph> paragraphs;//=new LinkedList<Paragraph>();
+
+    public LinkedList<Sentence> getSentences() {
+        return sentences;
+    }
+
+    public void setSentences(LinkedList<Sentence> sentences) {
+        this.sentences = sentences;
+    }
+
+    private LinkedList<Sentence> sentences;//=new LinkedList<Paragraph>();
     private LinkedList<Word> words = new LinkedList<Word>();
 
 

@@ -170,6 +170,45 @@ public class TextUtility {
     }
 
 
+    public static Text splitSentencesFromFile(String filePath) throws FileNotFoundException {
+
+        FileReader fr = DataReader.Read(filePath);
+        Text txt=new Text(filePath);
+
+        String pSentence="";
+
+        LinkedList<Sentence> sentenceList = new LinkedList<Sentence>();
+
+        textUtilLog.debug(" begin ");
+        Pattern p=Pattern.compile(PunctuationMark.getMarkSentence());
+        textUtilLog.debug("pattern delim="+p.pattern());
+        Scanner scan = new Scanner(fr);
+        scan.useDelimiter(p);
+        int i = 0;
+
+        while (scan.hasNext()) {
+            pSentence=scan.next();
+            textUtilLog.debug("      >------------------Sentence--------------------        " );
+            textUtilLog.debug("      " + pSentence + "     ");
+            Sentence sentence = new Sentence();
+            sentence.setElementSentence(pSentence);
+            sentence.setElementId(i+1);
+            textUtilLog.debug("        sentences List i = [" + i + "]");
+            textUtilLog.debug("      -------------------Sentence--------------------<        " );
+            sentenceList.add(i,sentence);
+            i++;
+
+        }
+
+        txt.setSentences(sentenceList);
+
+        scan.close();
+        textUtilLog.debug(filePath + " split sentences end ");
+        return txt;
+
+    }
+
+
 
 /*
 *
