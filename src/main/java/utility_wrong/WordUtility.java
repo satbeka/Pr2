@@ -1,7 +1,7 @@
-package utility;
+package utility_wrong;
 
-import entity.PunctuationMark;
-import entity.Word;
+import entity_wrong.PunctuationMark;
+import entity_wrong.Word;
 import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;

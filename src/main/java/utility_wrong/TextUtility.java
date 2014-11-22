@@ -1,9 +1,9 @@
-package utility;
+package utility_wrong;
 
-import entity.Paragraph;
-import entity.PunctuationMark;
-import entity.Sentence;
-import entity.Text;
+import entity_wrong.Paragraph;
+import entity_wrong.PunctuationMark;
+import entity_wrong.Sentence;
+import entity_wrong.Text;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
@@ -26,8 +26,8 @@ public class TextUtility {
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
 
-        DataReader dataReader=new DataReader();
-        InputStream is=DataReader.class.getClassLoader().getResourceAsStream(inPath);
+        utility_wrong.TextUtility.DataReader dataReader=new utility_wrong.TextUtility.DataReader();
+        InputStream is=utility_wrong.TextUtility.DataReader.class.getClassLoader().getResourceAsStream(inPath);
 
         Reader      reader      = new InputStreamReader(is);
         Scanner scan=new Scanner(reader);
@@ -42,7 +42,7 @@ public class TextUtility {
         //File f = new File(path);
         //txt.textLog
 /*
-        textUtilLog.info(path + " split entity.Paragraph begin ");
+        textUtilLog.info(path + " split entity_wrong.Paragraph begin ");
         textUtilLog.info(" f.toString()= "+f.toString());
         textUtilLog.info(" f.exists();= "+f.exists());
         textUtilLog.info(" f.canRead= "+f.canRead());
@@ -73,17 +73,17 @@ public class TextUtility {
 
             while (scan.hasNext()) {
 
-                textUtilLog.debug("      >------------------entity.Paragraph--------------------        " );
+                textUtilLog.debug("      >------------------entity_wrong.Paragraph--------------------        " );
                 textUtilLog.debug("" + scan.next() + "");
                 Paragraph prgh = new Paragraph();
 
                 prgh.setElementParagraph(scan.next());
                 prgh.setElementId(i+1);
                 //log
-                //textUtilLog.info(" entity.Paragraph = [" + scan.next() + "]");
+                //textUtilLog.info(" entity_wrong.Paragraph = [" + scan.next() + "]");
                 //textUtilLog.debug(" scan.toString() = [" + scan.toString() + "]");
                 textUtilLog.debug("        prghList i = [" + i + "]");
-                textUtilLog.debug("      -------------------entity.Paragraph--------------------<        " );
+                textUtilLog.debug("      -------------------entity_wrong.Paragraph--------------------<        " );
                 prghList.add(i, prgh);
                 i++;
 
@@ -92,7 +92,7 @@ public class TextUtility {
             txt.setParagraphs(prghList);
 
             scan.close();
-            textUtilLog.debug(filePath + " split entity.Paragraph end ");
+            textUtilLog.debug(filePath + " split entity_wrong.Paragraph end ");
             return txt;
 
 
@@ -145,14 +145,14 @@ public class TextUtility {
                 Pattern p2=Pattern.compile("[^.|?|!|()]");
                 Matcher m2=p2.matcher(pSentence);
 
-                textUtilLog.debug("      >------------------entity.Sentence--------------------        ");
+                textUtilLog.debug("      >------------------entity_wrong.Sentence--------------------        ");
                 textUtilLog.debug("               pSentence=  " + pSentence);
 
                 if (m2.matches()) {
 
                     textUtilLog.debug("      >------------------2Sentence--------------------        ");
                     textUtilLog.debug("               2pSentence=  " + pSentence);
-                    entity.Sentence sentence = new entity.Sentence();
+                    entity_wrong.Sentence sentence = new entity_wrong.Sentence();
                     sentence.setElementSentence(pSentence);
                     sentence.setElementId(i + 1);
                     textUtilLog.debug("        sentenceList i = [" + i + "]");
@@ -167,7 +167,7 @@ public class TextUtility {
 
             inParagraph.setSentences(sentenceList);
 
-            textUtilLog.debug(" split entity.Paragraph=[ "+inParagraph.getElementId()+" ] end" );
+            textUtilLog.debug(" split entity_wrong.Paragraph=[ "+inParagraph.getElementId()+" ] end" );
             return inParagraph;
 
     }
@@ -191,13 +191,13 @@ public class TextUtility {
 
         while (scan.hasNext()) {
             pSentence=scan.next().toLowerCase();
-            textUtilLog.debug("                 >------------------entity.Sentence--------------------        " );
+            textUtilLog.debug("                 >------------------entity_wrong.Sentence--------------------        " );
             textUtilLog.debug("      " + pSentence + "     ");
             Sentence sentence = new Sentence();
             sentence.setElementSentence(pSentence);
             sentence.setElementId(i+1);
             textUtilLog.debug("        sentences List i = [" + i + "]");
-            textUtilLog.debug("                 -------------------entity.Sentence--------------------<        " );
+            textUtilLog.debug("                 -------------------entity_wrong.Sentence--------------------<        " );
             sentenceList.add(i,sentence);
             i++;
 
@@ -223,6 +223,27 @@ public class TextUtility {
 * */
 
 
+    /**
+     * Created by 1 on 17.11.2014.
+     */
+    public static class DataReader {
+          private static org.slf4j.Logger DataReaderLog = LoggerFactory.getLogger("textLog");
+
+          public static FileReader Read(String file_path) throws FileNotFoundException
+          {
+              File f = new File(file_path);
+              if (!f.exists()) {
+                  DataReaderLog.info("file is n't exist = [" + file_path + "]");
+                  //System.out.println("file is n't exist = [" + path + "]");
+                  return null;
+              }
 
 
+              return new FileReader(f);
+
+
+
+          }
+
+    }
 }

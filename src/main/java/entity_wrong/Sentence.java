@@ -1,9 +1,9 @@
-package entity;
+package entity_wrong;
 
 /**
  * Created by 1 on 09.11.2014.
  */
-public class Sentence {
+public class Sentence extends Paragraph{
     private String elementSentence;
     private int elementId;
 

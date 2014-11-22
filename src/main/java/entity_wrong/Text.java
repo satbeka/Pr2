@@ -1,4 +1,4 @@
-package entity;
+package entity_wrong;
 
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +16,7 @@ public class Text {
     private String filePath;
 
     /* if many times need to replace, delete, remove, add */
-    private LinkedList<Paragraph> paragraphs;//=new LinkedList<entity.Paragraph>();
+    private LinkedList<Paragraph> paragraphs;//=new LinkedList<entity_wrong.Paragraph>();
 
     public LinkedList<Sentence> getSentences() {
         return sentences;
@@ -26,13 +26,13 @@ public class Text {
         this.sentences = sentences;
     }
 
-    private LinkedList<Sentence> sentences;//=new LinkedList<entity.Paragraph>();
+    private LinkedList<Sentence> sentences;//=new LinkedList<entity_wrong.Paragraph>();
     private LinkedList<Word> words = new LinkedList<Word>();
 
 
     /* if many times seek
-    private ArrayList<entity.Paragraph> paragraphs;
-    private ArrayList<entity.Word> words;// = new ArrayList<entity.Word>();
+    private ArrayList<entity_wrong.Paragraph> paragraphs;
+    private ArrayList<entity_wrong.Word> words;// = new ArrayList<entity_wrong.Word>();
     */
 
     public Text() {

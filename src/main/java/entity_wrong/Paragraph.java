@@ -1,4 +1,4 @@
-package entity;
+package entity_wrong;
 
 import java.util.LinkedList;
 
@@ -9,7 +9,7 @@ public class Paragraph extends Text {
 
  private String elementParagraph;
  private int elementId;
-    private LinkedList<Sentence> sentences;//=new LinkedList<entity.Sentence>();
+    private LinkedList<Sentence> sentences;//=new LinkedList<entity_wrong.Sentence>();
 
     public int getElementId() {
         return elementId;

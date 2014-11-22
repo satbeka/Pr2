@@ -1,9 +1,9 @@
-package entity;
+package entity_wrong;
 
 /**
  * Created by 1 on 09.11.2014.
  */
-public class Word {
+public class Word extends Sentence{
     private String elementWord;
 
     public String getElementWord() {

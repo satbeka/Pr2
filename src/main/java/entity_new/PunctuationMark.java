@@ -1,4 +1,4 @@
-package entity;
+package entity_new;
 
 import org.slf4j.LoggerFactory;
 
@@ -22,39 +22,17 @@ public class PunctuationMark {
     }
 
     public static String getMarkParagraph(){
-        String rez,rez1=null;
+        String rez=null;
         ResourceBundle resourceBundle=ResourceBundle.getBundle("punctuation_mark");
-        rez1=resourceBundle.getString("MarkParagraph");
-        //rez1= "(\\n\\s)+";
-                //"(\n" +
-                //"\s)+";
-        //rez2="[/s]";
-        //.*[(]|.*[)]|.*[?] 171114
-        //.*[(]|.*[)]|.*[(]|.*[?]|.*[\n]|.*[.]
-        /*
-        * 10 Существует текст и список слов. Для каждого слова из за(данног)о списка
-найти, сколько раз оно встречается в каждом предложении, и рассортиро-
-вать слова? по убыванию общего количества вхождений.
-tyttuutyu!gjgjgj
-  GGhhhhh.
-        *
-        *
-        * */
-        rez=rez1;//+rez2;
+        rez=resourceBundle.getString("MarkParagraph");
         textLog.debug("Mark paragraph="+rez);
         return rez;
     }
 
     public static String getMarkSentence(){
-        String rez,rez1=null;
+        String rez=null;
         ResourceBundle resourceBundle=ResourceBundle.getBundle("punctuation_mark");
-        rez1=resourceBundle.getString("MarkSentence");
-
-        //rez1= "([.|!|?|()])";
-        //"(\n" +
-        //"\s)+";
-        //rez2="[/s]";
-        rez=rez1;//+rez2;
+        rez=resourceBundle.getString("MarkSentence");
         textLog.debug("Mark sentence="+rez);
         return rez;
     }
