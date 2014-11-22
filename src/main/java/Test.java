@@ -32,7 +32,7 @@ public class Test {
         log.info("begin ");
         int taskId=10;
         CompositeComponentTxt words= utility_new.WordUtility.getListFromResources();
-        CompositeComponentTxt sentences=utility_new.TextUtility.splitSentencesFromFile("C:\\111\\FarFAQ.txt");
+        CompositeComponentTxt sentences=utility_new.TextUtility.splitSentencesFromFile("C:\\111\\FarFAQ2.txt");
         ArrayList<ComponentTxt> listComponentTxt=words.getListComponentTxt();
         ArrayList<entity_new.Word> wordsToSort=new ArrayList<entity_new.Word>();
         //String strWord;

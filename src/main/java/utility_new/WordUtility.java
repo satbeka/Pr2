@@ -46,7 +46,7 @@ public class WordUtility {
         Pattern p=Pattern.compile(inWord.getElement());
         Matcher m= p.matcher(strSentence);
         int i=0;
-        while (m.matches()){
+        while (m.find()){
             i++;
         }
         inWord.setCountInAllsentences(i);
