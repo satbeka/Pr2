@@ -2,6 +2,9 @@ import entity_new.ComponentTxt;
 import entity_new.CompositeComponentTxt;
 import entity_new.Sentence;
 import org.slf4j.LoggerFactory;
+import utility_new.DataReader;
+import utility_new.TextUtility;
+import utility_new.WordUtility;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -11,15 +14,6 @@ import java.util.Collections;
  * Created by 1 on 09.11.2014.
  */
 
-
-/*
-*
-* 10 Существует текст и список слов. Для каждого слова из заданного списка
-найти, сколько раз оно встречается в каждом предложении, и рассортиро-
-вать слова по убыванию общего количества вхождений.
-*
-*
-* */
 
 public class Test {
 
@@ -31,8 +25,8 @@ public class Test {
 
         log.info("begin ");
         int taskId=10;
-        CompositeComponentTxt words= utility_new.WordUtility.getListFromResources();
-        CompositeComponentTxt sentences=utility_new.TextUtility.splitSentencesFromFile("C:\\111\\FarFAQ2.txt");
+        CompositeComponentTxt words= WordUtility.getListFromResources();
+        CompositeComponentTxt sentences= TextUtility.splitSentencesFromFile(DataReader.getFilePath());
         ArrayList<ComponentTxt> listComponentTxt=words.getListComponentTxt();
         ArrayList<entity_new.Word> wordsToSort=new ArrayList<entity_new.Word>();
         //String strWord;
@@ -43,7 +37,7 @@ public class Test {
             //strWord=word.getElement();
             for (ComponentTxt componentSentence : sentences.getListComponentTxt()) {
                 Sentence sentence = (Sentence) componentSentence;
-                i=utility_new.WordUtility.setCountWordInSentence(word,sentence);
+                i=WordUtility.setCountWordInSentence(word,sentence);
             }
 
             wordsToSort.add(word);
@@ -51,8 +45,9 @@ public class Test {
 
         //entity_new.Word simpleWord=new entity_new.Word();
         Collections.sort(wordsToSort, entity_new.Word.WordCount);
+        log.info("  sort by Task10 are: ");
         for (entity_new.Word word:wordsToSort){
-            log.info("  word="+word.getElement()+" cnt="+word.getCountInAllsentences());
+            log.info("  word="+word.getElement()+" count="+word.getCountInAllsentences());
         }
 
         log.info("end ");

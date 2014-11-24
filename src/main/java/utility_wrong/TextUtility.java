@@ -34,7 +34,7 @@ public class TextUtility {
 */
 
 
-        FileReader fr = DataReader.Read(filePath);
+        FileReader fr = DataReader2.Read(filePath);
 
         Text txt=new Text(filePath);
         //String path = txt.getFilePath();
@@ -175,7 +175,7 @@ public class TextUtility {
 
     public static Text splitSentencesFromFile(String filePath) throws FileNotFoundException {
 
-        FileReader fr = DataReader.Read(filePath);
+        FileReader fr = DataReader2.Read(filePath);
         Text txt=new Text(filePath);
 
         String pSentence="";
@@ -213,20 +213,10 @@ public class TextUtility {
 
 
 
-/*
-*
-* 10 Существует текст и список слов. Для каждого слова из заданного списка
-найти, сколько раз оно встречается в каждом предложении, и рассортиро-
-вать слова по убыванию общего количества вхождений.
-*
-*
-* */
-
-
     /**
      * Created by 1 on 17.11.2014.
      */
-    public static class DataReader {
+    public static class DataReader2 {
           private static org.slf4j.Logger DataReaderLog = LoggerFactory.getLogger("textLog");
 
           public static FileReader Read(String file_path) throws FileNotFoundException

@@ -1,11 +1,13 @@
 package entity_new;
 
+import utility_new.TextUtility;
+
 import java.util.Comparator;
 
 /**
  * Created by 1 on 22.11.2014.
  */
-public class Word extends Sentence {
+public class Word extends TextElement {
 
     public int getCountInAllsentences() {
         return countInAllsentences;

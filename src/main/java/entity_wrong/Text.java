@@ -75,7 +75,7 @@ public class Text {
     public void setFilePath(String filePath) {
         //logger
         this.filePath = filePath;
-        textLog.debug("filePath=" + filePath);
+        textLog.debug("filePath.properties=" + filePath);
     }
 
     public Text(String filePath) {

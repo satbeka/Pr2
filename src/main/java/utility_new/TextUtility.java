@@ -3,16 +3,16 @@ package utility_new;
 import entity_new.CompositeComponentTxt;
 import entity_new.PunctuationMark;
 import entity_new.Sentence;
-import entity_new.Text;
+import entity_new.TextElement;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static utility_new.DataReader.*;
 
 /**
  * Created by 1 on 14.11.2014.
@@ -22,8 +22,8 @@ public class TextUtility {
 
     public static CompositeComponentTxt splitSentencesFromFile(String filePath) throws FileNotFoundException {
 
-        FileReader fr = DataReader.Read(filePath);
-        Text txt=new Text();
+        FileReader fr = Read(filePath);
+        TextElement txt=new TextElement();
         String pSentence="";
         CompositeComponentTxt sentences = new CompositeComponentTxt();
 
@@ -55,27 +55,5 @@ public class TextUtility {
     }
 
 
-    /**
-     * Created by 1 on 17.11.2014.
-     */
-    public static class DataReader {
-          private static org.slf4j.Logger DataReaderLog = LoggerFactory.getLogger("textLog");
 
-          public static FileReader Read(String file_path) throws FileNotFoundException
-          {
-              File f = new File(file_path);
-              if (!f.exists()) {
-                  DataReaderLog.info("file is n't exist = [" + file_path + "]");
-                  //System.out.println("file is n't exist = [" + path + "]");
-                  return null;
-              }
-
-
-              return new FileReader(f);
-
-
-
-          }
-
-    }
 }
