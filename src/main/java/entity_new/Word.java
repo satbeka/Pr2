@@ -22,6 +22,7 @@ public class Word extends TextElement {
     public static Comparator<Word> WordCount = new Comparator<Word>() {
 
         public int compare(Word o1, Word o2) {
+
             return Integer.compare(o1.getCountInAllsentences(),o2.getCountInAllsentences());
         }};
 
